@@ -1,4 +1,4 @@
-Pas fini du premier coup, j'ai pris un peu trop de temps à chercher une solution clean alors qu'il faut tout simplement faire des boucles on peut bourrins.
+Pas fini du premier coup, j'ai pris un peu trop de temps à chercher une solution clean alors qu'il faut tout simplement faire des boucles et bruteforcé la solution.
 
 Ca reste Important de toujours chercher une bonne structure de données pour traiter le soucis correctement mais je pense
 que j'aurais pu identifier ce problème comme simple n'ayant pas spécifiquement besoins de solutions complexe.

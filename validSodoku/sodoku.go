@@ -25,17 +25,19 @@ func areValidSquares(squares map[int][]byte) bool {
 			return false
 		}
 	}
-	return false
+	return true
 }
 
-func areValidLines(board [][]byte, length int) bool {
+func areValidLines(board [][]byte) bool {
 	squareNums := make(map[int][]byte)
 
 	for i := 0; i < 9; i++ {
-		lineNums := make([]byte, 0, length)
-		columnNums := make([]byte, 0, length)
+		lineNums := make([]byte, 0, 9)
+		columnNums := make([]byte, 0, 9)
 		for j := 0; j < 9; j++ {
-			squareNumKey := math.Floor(float64(i)/3) + math.Floor(float64(j)/3)
+			iFloor := math.Ceil(float64(i/3) * 3)
+			jFloor := math.Floor(float64(j / 3))
+			squareNumKey := iFloor + jFloor
 
 			squareNums[int(squareNumKey)] = append(squareNums[int(squareNumKey)], board[i][j])
 			lineNums = append(lineNums, board[i][j])
@@ -57,5 +59,5 @@ func areValidLines(board [][]byte, length int) bool {
 }
 
 func isValidSudoku(board [][]byte) bool {
-	return areValidLines(board, 9)
+	return areValidLines(board)
 }
