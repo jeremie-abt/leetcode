@@ -1,32 +1,43 @@
 package uniquePath2
 
-var m, n int
+func solve(obstacleGrid [][]int, lineIter, colIter int) int {
+	obstacleGrid[0][0] = 1
 
-func recursion(obstacleGrid [][]int, lineIter, colIter int) int {
-	// Condition de sortie négative, on ne peut pas passer par cette case.
-	if obstacleGrid[lineIter][colIter] == 1 {
-		return 0
+	for i := 0; i < colIter; i++ {
+		for j := 0; j < lineIter; j++ {
+			if j == 0 && i == 0 {
+				continue
+			}
+			if obstacleGrid[i][j] == 1 {
+				obstacleGrid[i][j] = 0
+				continue
+			}
+
+			var leftIdx, aboveIdx, currentVal int
+			leftIdx = j - 1
+			aboveIdx = i - 1
+
+			if leftIdx >= 0 {
+				currentVal += obstacleGrid[i][leftIdx]
+			}
+			if aboveIdx >= 0 {
+				currentVal += obstacleGrid[aboveIdx][j]
+			}
+			obstacleGrid[i][j] = currentVal
+		}
 	}
 
-	// Condition de sortie positive : on a trouvé un chemin.
-	if m-1 == lineIter && n-1 == colIter {
-		return 1
-	}
-
-	var result int
-
-	if lineIter < m-1 {
-		result += recursion(obstacleGrid, lineIter+1, colIter)
-	}
-	if colIter < n-1 {
-		result += recursion(obstacleGrid, lineIter, colIter+1)
-	}
-	return result
+	return obstacleGrid[colIter-1][lineIter-1]
 }
 
 func uniquePathsWithObstacles(obstacleGrid [][]int) int {
-	m = len(obstacleGrid)
-	n = len(obstacleGrid[0])
+	if len(obstacleGrid) == 0 || len(obstacleGrid[0]) == 0 {
+		return 0
+	}
 
-	return recursion(obstacleGrid, 0, 0)
+	if obstacleGrid[0][0] == 1 {
+		return 0
+	}
+
+	return solve(obstacleGrid, len(obstacleGrid[0]), len(obstacleGrid))
 }

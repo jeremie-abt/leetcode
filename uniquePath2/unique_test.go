@@ -28,6 +28,17 @@ func TestUniquePath(t *testing.T) {
 			want: 1,
 		},
 		{
+			name: "5*5",
+			obstacleGrid: [][]int{
+				{0, 0, 0, 0, 0},
+				{0, 1, 0, 0, 0},
+				{0, 0, 1, 0, 0},
+				{0, 0, 0, 1, 0},
+				{0, 0, 0, 0, 0},
+			},
+			want: 8,
+		},
+		{
 			name: "time limit execution",
 			obstacleGrid: [][]int{
 				{0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0},
