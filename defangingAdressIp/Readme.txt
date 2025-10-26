@@ -1,0 +1,1 @@
+Pas très intéressant et encore moins en go.
